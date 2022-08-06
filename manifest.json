@@ -1,0 +1,24 @@
+{
+  "name": "phishingalert",
+  "description": "get alerted if the domain name doesn't end with common extensions",
+  "version": "0.1",
+  "update_url": "https://github.com/Jo-STFC/phishingalert",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage","tabs", "activeTab", "scripting", "declarativeContent"],
+  "host_permissions": [
+        "<all_urls>"
+      ],
+    "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"],
+	  "run_at": "document_end"
+    }
+  ],
+  "externally_connectable": {
+    "matches": ["<all_urls>"]
+}
+}
